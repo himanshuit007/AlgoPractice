@@ -75,7 +75,7 @@ public class SinglyLinkedList {
 		}
 	}
 
-	public String  deleteAtEnding() {
+	public String deleteAtEnding() {
 		String data = null;
 		if (head == null) {
 			data = null;
@@ -100,6 +100,10 @@ public class SinglyLinkedList {
 	}
 
 	public void iterate() {
+		if (head == null) {
+			System.out.println("List is empty");
+			return;
+		}
 		SingleNode temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + "->");
@@ -116,6 +120,19 @@ public class SinglyLinkedList {
 			counter++;
 		}
 		return counter;
+	}
+
+	public void deleteList() {
+		if (head == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		SingleNode temp;
+		while (head != null) {
+			temp = head;
+			head = head.next;
+			temp = null;
+		}
 	}
 
 	public static void main(String[] args) {
@@ -149,6 +166,10 @@ public class SinglyLinkedList {
 		l.insertAtPosition(String.valueOf(999), 1);
 		l.insertAtPosition(String.valueOf(0), 0);
 		l.insertAtPosition(String.valueOf(9), 3);
+		l.iterate();
+
+		l.deleteList();
+		System.out.println("After deleting list");
 		l.iterate();
 	}
 }
