@@ -48,12 +48,15 @@ public class SinglyLinkedList {
 		}
 	}
 
-	public void deleteAtBegining() {
+	public String deleteAtBegining() {
+		String data = null;
 		if (head == null)
-			return;
+			data = null;
 		else {
+			data = head.data;
 			head = head.next;
 		}
+		return data;
 	}
 
 	public void insertAtEnding(String item) {
@@ -72,9 +75,10 @@ public class SinglyLinkedList {
 		}
 	}
 
-	public void deleteAtEnding() {
+	public String  deleteAtEnding() {
+		String data = null;
 		if (head == null) {
-			return;
+			data = null;
 		} else {// 3-null
 			SingleNode temp = head, last = null, prev = null;
 			while (temp != null) {
@@ -83,11 +87,16 @@ public class SinglyLinkedList {
 				temp = temp.next;
 			}
 
-			if (prev == null)
+			if (prev == null) {
+				data = head.data;
 				head = null;
-			else
+			} else {
+				data = prev.next.data;
 				prev.next = null;
+
+			}
 		}
+		return data;
 	}
 
 	public void iterate() {
@@ -119,7 +128,7 @@ public class SinglyLinkedList {
 
 		for (int j = 0; j < 11; j++) {
 			l.iterate();
-			l.deleteAtBegining();
+			System.out.println(l.deleteAtBegining());
 		}
 
 		for (int j = 0; j < 10; j++) {
@@ -130,7 +139,7 @@ public class SinglyLinkedList {
 
 		for (int j = 0; j < 11; j++) {
 			l.iterate();
-			l.deleteAtEnding();
+			System.out.println(l.deleteAtEnding());
 		}
 		for (int j = 0; j < 10; j++) {
 			l.insertAtPosition(String.valueOf(j), 1);
